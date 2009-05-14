@@ -297,6 +297,17 @@ describe Factory do
     end
   end
 
+  describe "a factory defined with a module name" do
+    before do
+      @factory = Factory.define('grouping_of_models/comment') {}
+    end
+
+    it "should load the class defined inside the module" do
+      @factory.build_class.should == GroupingOfModels::Comment
+    end
+  end
+
+
   describe "after defining a factory" do
     before do
       @name    = :user
